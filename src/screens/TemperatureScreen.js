@@ -7,6 +7,12 @@ import {Picker} from '@react-native-picker/picker';
 import NavigationButton from '../components/NavigationButton';
 import TemperatureConvert from '../services/TemperatureConvert';
 
+/**
+ * Temperature component for handling temperature conversion.
+ *
+ * @component
+ * @returns {React.Element} A React element representing the Temperature component.
+ */
 const Temperature = () => {
   const styles = GlobalStylesheet();
   const [fromUnit, setFromUnit] = useState('DegreeCelsius');
@@ -17,6 +23,10 @@ const Temperature = () => {
   const [toFahrenheitValue, setToFahrenheitValue] = useState('0');
   const [toKelvinValue, setToKelvinValue] = useState('0');
 
+  /**
+   * Handles the conversion of temperature units based on user input.
+   * @function
+   */
   const handleConvertClick = () => {
     const data = TemperatureConvert(fromUnit, fromValue);
     setToValue(data[toUnit]);
@@ -32,12 +42,12 @@ const Temperature = () => {
         <View style={styles.contentrow}>
           <UserInput
             value={fromValue}
-            onChange={value => setFromValue(value)}
+            onChange={(value) => setFromValue(value)}
           />
           <Picker
             style={styles.picker_container}
             selectedValue={fromUnit}
-            onValueChange={itemValue => setFromUnit(itemValue)}>
+            onValueChange={(itemValue) => setFromUnit(itemValue)}>
             <Picker.Item label="DegreeCelsius" value={'DegreeCelsius'} />
             <Picker.Item label="Fahrenheit" value={'Fahrenheit'} />
             <Picker.Item label="Kelvin" value={'Kelvin'} />
@@ -49,7 +59,7 @@ const Temperature = () => {
           <Picker
             style={styles.picker_container}
             selectedValue={toUnit}
-            onValueChange={itemValue => setToUnit(itemValue)}>
+            onValueChange={(itemValue) => setToUnit(itemValue)}>
             <Picker.Item label="DegreeCelsius" value={'DegreeCelsius'} />
             <Picker.Item label="Fahrenheit" value={'Fahrenheit'} />
             <Picker.Item label="Kelvin" value={'Kelvin'} />

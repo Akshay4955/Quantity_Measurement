@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/TemperatureScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/TemperatureScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {View, Text} from 'react-native';
+import {useState} from 'react';
+import GlobalStylesheet from '../utilities/GlobalStyleSheet';
+import Header from '../components/Header';
+import UserInput from '../components/UserInput';
+import {Picker} from '@react-native-picker/picker';
+import NavigationButton from '../components/NavigationButton';
+import TemperatureConvert from '../services/TemperatureConvert';
+
+/**
+ * Temperature component for handling temperature conversion.
+ *
+ * @component
+ * @returns {React.Element} A React element representing the Temperature component.
+ */
+const Temperature = () => {
+  const styles = GlobalStylesheet();
+  const [fromUnit, setFromUnit] = useState('DegreeCelsius');
+  const [toUnit, setToUnit] = useState('DegreeCelsius');
+  const [fromValue, setFromValue] = useState('');
+  const [toValue, setToValue] = useState('');
+  const [toDegreeCelsiusValue, setToDegreeCelsiusValue] = useState('0');
+  const [toFahrenheitValue, setToFahrenheitValue] = useState('0');
+  const [toKelvinValue, setToKelvinValue] = useState('0');
+
+  /**
+   * Handles the conversion of temperature units based on user input.
+   * @function
+   */
+  const handleConvertClick = () => {
+    const data = TemperatureConvert(fromUnit, fromValue);
+    setToValue(data[toUnit]);
+    setToDegreeCelsiusValue(data.DegreeCelsius);
+    setToFahrenheitValue(data.Fahrenheit);
+    setToKelvinValue(data.Kelvin);
+  };
+
+  return (
+    &lt;View style={styles.container}>
+      &lt;View style={styles.screen_container}>
+        &lt;Header title={'From :'} />
+        &lt;View style={styles.contentrow}>
+          &lt;UserInput
+            value={fromValue}
+            onChange={(value) => setFromValue(value)}
+          />
+          &lt;Picker
+            style={styles.picker_container}
+            selectedValue={fromUnit}
+            onValueChange={(itemValue) => setFromUnit(itemValue)}>
+            &lt;Picker.Item label="DegreeCelsius" value={'DegreeCelsius'} />
+            &lt;Picker.Item label="Fahrenheit" value={'Fahrenheit'} />
+            &lt;Picker.Item label="Kelvin" value={'Kelvin'} />
+          &lt;/Picker>
+        &lt;/View>
+        &lt;Header title={'To :'} />
+        &lt;View style={styles.contentrow}>
+          &lt;UserInput value={toValue.toString()} />
+          &lt;Picker
+            style={styles.picker_container}
+            selectedValue={toUnit}
+            onValueChange={(itemValue) => setToUnit(itemValue)}>
+            &lt;Picker.Item label="DegreeCelsius" value={'DegreeCelsius'} />
+            &lt;Picker.Item label="Fahrenheit" value={'Fahrenheit'} />
+            &lt;Picker.Item label="Kelvin" value={'Kelvin'} />
+          &lt;/Picker>
+        &lt;/View>
+      &lt;/View>
+      &lt;NavigationButton title={'Convert'} handleClick={handleConvertClick} />
+      &lt;View style={styles.result_container}>
+        &lt;View style={styles.contentrow}>
+          &lt;UserInput value={toDegreeCelsiusValue.toString()} />
+          &lt;Text style={styles.list_text}>DegreeCelsius&lt;/Text>
+        &lt;/View>
+        &lt;View style={styles.contentrow}>
+          &lt;UserInput value={toFahrenheitValue.toString()} />
+          &lt;Text style={styles.list_text}>Fahrenheit&lt;/Text>
+        &lt;/View>
+        &lt;View style={styles.contentrow}>
+          &lt;UserInput value={toKelvinValue.toString()} />
+          &lt;Text style={styles.list_text}>Kelvin&lt;/Text>
+        &lt;/View>
+      &lt;/View>
+    &lt;/View>
+  );
+};
+
+export default Temperature;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#AppTab">AppTab</a></li><li><a href="global.html#GlobalStylesheet">GlobalStylesheet</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Length">Length</a></li><li><a href="global.html#LengthConvert">LengthConvert</a></li><li><a href="global.html#NavigationButton">NavigationButton</a></li><li><a href="global.html#Stack">Stack</a></li><li><a href="global.html#Temperature">Temperature</a></li><li><a href="global.html#TemperatureConvert">TemperatureConvert</a></li><li><a href="global.html#UserInput">UserInput</a></li><li><a href="global.html#Weight">Weight</a></li><li><a href="global.html#WeightConvert">WeightConvert</a></li><li><a href="global.html#borderRadius">borderRadius</a></li><li><a href="global.html#borderWidth">borderWidth</a></li><li><a href="global.html#color">color</a></li><li><a href="global.html#fontSize">fontSize</a></li><li><a href="global.html#height">height</a></li><li><a href="global.html#margin">margin</a></li><li><a href="global.html#padding">padding</a></li><li><a href="global.html#scaleHeight">scaleHeight</a></li><li><a href="global.html#scaleSize">scaleSize</a></li><li><a href="global.html#scaleWidth">scaleWidth</a></li><li><a href="global.html#styles">styles</a></li><li><a href="global.html#width">width</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jan 11 2024 10:58:58 GMT+0530 (India Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

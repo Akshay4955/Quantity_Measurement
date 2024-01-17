@@ -1,8 +1,12 @@
 import React from 'react';
 import AppTab from './navigation/AppTab';
-import GlobalStylesheet from './utilities/GlobalStyleSheet';
 
-const styles = GlobalStylesheet();
+/**
+ * Main component rendering the application.
+ *
+ * @component
+ * @return {JSX.Element} The root component of the application.
+ */
 const App = () => {
   return <AppTab />;
 };

@@ -7,19 +7,29 @@ import Weight from '../screens/WeightScreen';
 import GlobalStylesheet from '../utilities/GlobalStyleSheet';
 import Home from '../screens/HomeScreen';
 
-const styles = GlobalStylesheet();
+/**
+ * Stack navigator for the different screens in the application.
+ *
+ * @constant {Object} Stack - The stack navigator created using createNativeStackNavigator.
+ */
 const Stack = createNativeStackNavigator();
 
+/**
+ * AppTab component representing the main navigation container for the application.
+ *
+ * @component
+ * @returns {React.Element} A React element representing the AppTab component.
+ */
 const AppTab = () => {
   return (
-    <NavigationContainer >
+    <NavigationContainer>
       <Stack.Navigator
         initialRouteName={'Home'}
         screenOptions={{
           headerMode: 'screen',
           headerTintColor: 'white',
-          headerStyle: {backgroundColor: '#023E8A'},
-          headerTitleStyle: {fontSize: 30},
+          headerStyle: { backgroundColor: '#023E8A' },
+          headerTitleStyle: { fontSize: 30 },
         }}>
         <Stack.Screen name="Quantity Measurement" component={Home} />
         <Stack.Screen name="Temperature" component={Temperature} />

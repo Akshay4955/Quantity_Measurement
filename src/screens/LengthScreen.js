@@ -7,6 +7,12 @@ import {Picker} from '@react-native-picker/picker';
 import NavigationButton from '../components/NavigationButton';
 import LengthConvert from '../services/LengthConvert';
 
+/**
+ * Length component for handling length conversion.
+ *
+ * @component
+ * @returns {React.Element} A React element representing the Length component.
+ */
 const Length = () => {
   const styles = GlobalStylesheet();
   const [fromUnit, setFromUnit] = useState('Meter');
@@ -22,6 +28,10 @@ const Length = () => {
   const height = Dimensions.get('window').height;
   console.log(height);
 
+  /**
+   * Handles the conversion of length units based on user input.
+   * @function
+   */
   const handleConvert = () => {
     const data = LengthConvert(fromUnit, fromValue);
     setToValue(data[toUnit]);
@@ -39,12 +49,12 @@ const Length = () => {
         <View style={styles.contentrow}>
           <UserInput
             value={fromValue}
-            onChange={value => setFromValue(value)}
+            onChange={(value) => setFromValue(value)}
           />
           <Picker
             style={styles.picker_container}
             selectedValue={fromUnit}
-            onValueChange={itemValue => setFromUnit(itemValue)}>
+            onValueChange={(itemValue) => setFromUnit(itemValue)}>
             <Picker.Item label="Kilometer" value={'Kilometer'} />
             <Picker.Item label="Meter" value={'Meter'} />
             <Picker.Item label="Centimeter" value={'Centimeter'} />
@@ -58,7 +68,7 @@ const Length = () => {
           <Picker
             style={styles.picker_container}
             selectedValue={toUnit}
-            onValueChange={itemValue => setToUnit(itemValue)}>
+            onValueChange={(itemValue) => setToUnit(itemValue)}>
             <Picker.Item label="Kilometer" value={'Kilometer'} />
             <Picker.Item label="Meter" value={'Meter'} />
             <Picker.Item label="Centimeter" value={'Centimeter'} />

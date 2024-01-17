@@ -3,13 +3,29 @@ import * as Constant from './MyConstants';
 
 
 
-
+/**
+ * Generates a global stylesheet with consistent styling based on device dimensions.
+ *
+ * @function
+ * @returns {Object} A StyleSheet object containing style definitions for various components.
+ */
 const GlobalStylesheet = () => {
   const height = Dimensions.get("window").height;
   const width = Dimensions.get("window").width;
 
+  /**
+   * StyleSheet object with consistent styling.
+   *
+   * @typedef {Object} StyleSheet
+   * @property {Object} container - Style for the main container.
+   * @property {Object} contentrow - Style for a row in the content.
+   * @property {Object} list_text - Style for text in lists.
+   * @property {Object} picker_container - Style for picker components.
+   * @property {Object} result_container - Style for the result container.
+   * @property {Object} screen_container - Style for the screen container.
+   */
+
   return StyleSheet.create({
-    
     container: {
       flex: 1,
       flexDirection: height > width ? 'column' : 'row',
@@ -19,7 +35,6 @@ const GlobalStylesheet = () => {
       borderColor: Constant.color.borderColor,
       borderWidth: Constant.borderWidth.large,
     },
-
     contentrow: {
       flexDirection: 'row',
       justifyContent: 'space-between',

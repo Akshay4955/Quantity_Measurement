@@ -1,0 +1,21 @@
+{
+  "source": {
+    "include": ["src"],
+    "exclude": ["node_modules"]
+  },
+  "opts": {
+    "destination": "docs",
+    "encoding": "utf8",
+    "recurse": true
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+  }
+}

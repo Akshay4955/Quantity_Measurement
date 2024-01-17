@@ -1,5 +1,14 @@
+/**
+ * Converts temperature from one unit to multiple units.
+ *
+ * @function
+ * @param {string} fromUnit - The unit from which conversion is done (e.g., 'DegreeCelsius').
+ * @param {number} fromValue - The value to be converted.
+ * @returns {Object} An object containing converted values in DegreeCelsius, Fahrenheit, and Kelvin units.
+ */
 const TemperatureConvert = (fromUnit, fromValue) => {
   let value = {};
+
   switch (fromUnit) {
     case 'DegreeCelsius':
       value.DegreeCelsius = fromValue * 1;
@@ -17,6 +26,7 @@ const TemperatureConvert = (fromUnit, fromValue) => {
       value.Kelvin = fromValue * 1;
       break;
   }
+
   return value;
 };
 

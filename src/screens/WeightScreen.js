@@ -7,6 +7,12 @@ import {Picker} from '@react-native-picker/picker';
 import NavigationButton from '../components/NavigationButton';
 import WeightConvert from '../services/WeightConvert';
 
+/**
+ * Weight component for handling weight conversion.
+ *
+ * @component
+ * @returns {React.Element} A React element representing the Weight component.
+ */
 const Weight = () => {
   const styles = GlobalStylesheet();
   const [fromUnit, setFromUnit] = useState('Tonne');
@@ -18,6 +24,10 @@ const Weight = () => {
   const [toGramValue, setToGramValue] = useState('0');
   const [toMiligramValue, setToMiligramValue] = useState('0');
 
+  /**
+   * Handles the conversion of weight units based on user input.
+   * @function
+   */
   const handleConvertClick = () => {
     const data = WeightConvert(fromUnit, fromValue);
     setToValue(data[toUnit]);
@@ -34,12 +44,12 @@ const Weight = () => {
         <View style={styles.contentrow}>
           <UserInput
             value={fromValue}
-            onChange={value => setFromValue(value)}
+            onChange={(value) => setFromValue(value)}
           />
           <Picker
             style={styles.picker_container}
             selectedValue={fromUnit}
-            onValueChange={itemValue => setFromUnit(itemValue)}>
+            onValueChange={(itemValue) => setFromUnit(itemValue)}>
             <Picker.Item label="Tonne" value={'Tonne'} />
             <Picker.Item label="Kilogram" value={'Kilogram'} />
             <Picker.Item label="Gram" value={'Gram'} />
@@ -52,7 +62,7 @@ const Weight = () => {
           <Picker
             style={styles.picker_container}
             selectedValue={toUnit}
-            onValueChange={itemValue => setToUnit(itemValue)}>
+            onValueChange={(itemValue) => setToUnit(itemValue)}>
             <Picker.Item label="Tonne" value={'Tonne'} />
             <Picker.Item label="Kilogram" value={'Kilogram'} />
             <Picker.Item label="Gram" value={'Gram'} />

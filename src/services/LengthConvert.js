@@ -1,5 +1,14 @@
+/**
+ * Converts length from one unit to multiple units.
+ *
+ * @function
+ * @param {string} fromUnit - The unit from which conversion is done (e.g., 'Kilometer').
+ * @param {number} fromValue - The value to be converted.
+ * @returns {Object} An object containing converted values in Kilometer, Meter, Centimeter, Foot, and Inch units.
+ */
 const LengthConvert = (fromUnit, fromValue) => {
   let value = {};
+
   switch (fromUnit) {
     case 'Kilometer':
       value.Kilometer = fromValue * 1;
@@ -37,6 +46,7 @@ const LengthConvert = (fromUnit, fromValue) => {
       value.Inch = fromValue * 1;
       break;
   }
+
   return value;
 };
 
